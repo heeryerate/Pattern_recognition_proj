@@ -1,0 +1,109 @@
+%                                                                      Package
+%********************************************************************************************************************************
+\usepackage[margin=1.0in]{geometry}
+\usepackage{amsfonts,amsmath,amssymb}
+\usepackage[x11names]{xcolor}
+\usepackage{colortbl}
+\usepackage[pagecolor={green!0!white}]{pagecolor}
+\usepackage{tikz}
+\usepackage{multirow}
+\usepackage{lscape}
+\usepackage{float}
+\usepackage{dcolumn}
+\usepackage{booktabs}
+%********************************************************************************************************************************
+
+%                                                                   Code environment
+%********************************************************************************************************************************
+\usepackage{listings}
+\usepackage{color}
+
+\definecolor{dkgreen}{rgb}{0,0.6,0}
+\definecolor{gray}{rgb}{0.5,0.5,0.5}
+\definecolor{mauve}{rgb}{0.58,0,0.82}
+
+\lstset{frame=tb,language=python,aboveskip=3mm,belowskip=3mm,showstringspaces=false,columns=flexible,basicstyle={\small\ttfamily},
+	 numbers=none,numberstyle=\tiny\color{gray},keywordstyle=\color{blue},commentstyle=\color{dkgreen},stringstyle=\color{mauve},
+	  breaklines=true,breakatwhitespace=true,tabsize=3}
+%********************************************************************************************************************************	  
+
+%                                                                     Newcommand
+%********************************************************************************************************************************
+\newcommand{\R}{\mathbf{R}}				%Real
+\newcommand{\Z}{\mathbf{Z}}				%Integer
+\newcommand{\Q}{\mathbf{Q}}				%Rational
+\newcommand{\B}{\mathbf{B}}				%Binary
+
+\newcommand{\rank}[1]{\textit{\textbf{rank}}(#1)}		%rank
+\newcommand{\dimension}[1]{\textit{\textbf{dim}}(#1)}		%dimension
+\newcommand{\conv}[1]{\textit{\textbf{conv}}(#1)}		%Convex hull
+\newcommand{\recc}[1]{\textit{\textbf{recc}}(#1)}		%Reccsion cone
+\newcommand{\lin}[1]{\textit{\textbf{lin}}(#1)}			%linearity space
+\newcommand{\interior}[1]{\textit{\textbf{int}}(#1)}			%interior points set
+\newcommand{\bound}[1]{\textit{\textbf{bd}}(#1)}			%bound set
+\newcommand{\ri}[1]{\textit{\textbf{ri}}(#1)}			%relative interior points set
+\newcommand{\cl}[1]{\textit{\textbf{cl}}(#1)}			%closure
+\newcommand{\ie}{\textit{i.e.}}					%i.e.				
+\newcommand{\m}[1]{~\mbox{#1}~}					%mbox
+\newcommand{\mc}[1]{\mathcal{#1}}				%mathcal
+\newcommand{\mbb}[1]{\mathbb{#1}}				%mathbb
+\newcommand{\norm}[1]{\|#1\|_2}				%2-norm
+\newcommand{\todo}[1]{{\color{red}{#1}}}  %highlight on red
+
+\DeclareMathOperator{\diag}{diag} 
+
+\newcommand{\Qs}[1]{\ \par\noindent{\textsc{\large{Question}}}~\textbf{\large{#1}}.}	%Question style
+\newcommand{\sub}[1]{\textbf{(#1)}:}								%subproblem
+\newcommand{\co}[1]{\ \par \textbf{(\emph{#1})}}						%cooperator/reference
+
+\newcommand{\rowline}{~\\ \hrule ~\\}								%rowline
+%********************************************************************************************************************************
+
+%                                                                   Newenvironment
+%********************************************************************************************************************************
+\newenvironment{solution}{\par\noindent\textbf{\emph{Solution}:}}{\hfill $\diamondsuit$\par}
+\newenvironment{proof}{\par\noindent\textbf{\emph{Proof}:}}{\hfill $\Box$\par}
+%********************************************************************************************************************************
+ 
+%                                                                         Title
+%********************************************************************************************************************************
+\newcommand{\ip}[2]{
+\noindent \textsc{Homework \##1}\hfill \textbf{Xi He}~~\today\\
+ISE418 -- Integer Programming \hfill \textbf{Due:} #2, 2014\\
+\begin{tikzpicture}\draw (1,1) -- (17.5,1);\end{tikzpicture}}      				%Integer Programming Homework
+
+\newcommand{\ipm}[2]{
+\noindent \textsc{Midterm \##1}\hfill \textbf{Xi He}~~\today\\
+ISE418 -- Integer Programming \hfill \textbf{Due:} #2, 2014, 5:59 PM\\
+\begin{tikzpicture}\draw (1,1) -- (17.5,1);\end{tikzpicture}}      				%Integer Programming Midterm
+
+\newcommand{\pat}[2]{
+\noindent \textsc{Homework \##1}\hfill \textbf{Xi He}~~\today\\
+CSE426 -- Pattern Recognition \hfill \textbf{Due:} #2, 2015\\
+\begin{tikzpicture}\draw (1,1) -- (17.5,1);\end{tikzpicture}}					%Intro of Lp Homework
+
+\newcommand{\patfinal}[1]{
+\noindent \textsc{Final Project}\hfill \textbf{Xi He}~~\today\\
+CSE426 -- Pattern Recognition \hfill \textbf{Due:} #1, 2015\\
+\begin{tikzpicture}\draw (1,1) -- (17.5,1);\end{tikzpicture}}   
+
+\newcommand{\lpb}[2]{
+\noindent \textsc{Bonus \##1}\hfill \textbf{Xi He}~~\today\\
+ISE406 -- Intro of LP \hfill \textbf{Due:} #2, 2014\\
+\begin{tikzpicture}\draw (1,1) -- (17.5,1);\end{tikzpicture}}					%Intro of Lp Bonus
+
+\newcommand{\con}[2]{
+\noindent \textsc{Homework \##1}\hfill \textbf{Xi He}~~\today\\
+ISE417 -- nonlinear programming \hfill \textbf{Due:} #2, 2015\\
+\hrule}
+%\begin{tikzpicture}\draw (1,1) -- (17.5,1);\end{tikzpicture}}					%Convex Anal. and Opt. 
+
+\pagenumbering{Roman}                                                                              %pagenumber
+%********************************************************************************************************************************
+
+\newcommand*{\starnr}{\stepcounter{equation}\tag{\theequation}}
+\makeatletter
+\newenvironment{Salign}
+  {\start@align\@ne\st@rredtrue\m@ne}
+  {\starnr\endalign}
+\makeatother
